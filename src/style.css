@@ -11,6 +11,7 @@
   --brand-green: #109d44;
   --font-color: #18181b;
   --font-color-light: #f1f5f9;
+  --hover-nav-color: #f4f4f5;
 }
 
 body {
@@ -114,7 +115,7 @@ h2 {
   top: 0;
   bottom: 0;
   margin: auto;
-  height: 350px;
+  height: 380px;
   width: 700px;
   box-shadow: 2px 2px 30px;
   border-radius: 10px;
@@ -156,10 +157,17 @@ h2 {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+
+}
+
+.modal-nav > div:hover {
+  background-color: var(--hover-nav-color);
 }
 
 .task {
-  margin-left: -25px;
+  
 }
 
 .add-new-modal .main-content {
@@ -174,13 +182,25 @@ h2 {
 .add-new-modal textarea {
   font-family: inherit;
   font-size: 100%;
-  appearance: none;
-  outline: none;
-  border: none;
   background-color: inherit;
   resize: none;
 }
 
+.add-new-modal input[type="text"],
+textarea {
+  appearance: none;
+  outline: none;
+  border: none;
+}
+
 .date-container {
   display: flex;
+}
+
+.priority-radio {
+  display: flex;
+}
+
+.priority-radio button {
+  margin-left: auto
 }
