@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./bundle.js"></script>
+    <link rel="stylesheet" href="../src/style.css" />
+    <title>WhatToDo</title>
+  </head>
+  <body>
+    <div class="header">
+      <img src="../src/assets/logo-icon.png" alt="green-checkmark" />
+      <h1>What<span class="conquer">ToDo</span></h1>
+    </div>
+    <div class="content">
+      <div class="nav">
+        <div class="home">
+          <h2>Home</h2>
+          <div class="tasks">
+            <img src="../src/assets/tasks.png" />
+            <div>All Tasks</div>
+          </div>
+          <div class="today">
+            <img src="../src/assets/today.png" />
+            <div>Today</div>
+          </div>
+          <div class="seven-days">
+            <img src="../src/assets/7-days.png" />
+            <div>Next 7 Days</div>
+          </div>
+          <div class="important">
+            <img src="../src/assets/important-star.svg" />
+            <div>Important</div>
+          </div>
+        </div>
+        <div class="projects">
+          <h2>Projects</h2>
+        </div>
+        <button class="add-new">+</button>
+      </div>
+      <div class="main-area"></div>
+    </div>
+    <div class="add-new-modal">
+      <div class="modal-header">
+        <h3>Create a new...</h3>
+        <div class="close">&#x2715</div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-nav">
+          <div class="task">
+            <img src="../src/assets/modal-task.png">
+            <div>Task</div>
+          </div>
+          <div class="project">
+            <img src="../src/assets/modal-project.png">
+            <div>Project</div>
+          </div>
+        </div>
+        <div class="main-content">
+          <input type="text" id="title" placeholder="Title: Pay bills" />
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Details: e.g internet, phone, rent."
+          ></textarea>
+          <div class="date-container">
+            <label for="date">Due Date:</label>
+            <div class="date"><input type="date" id="date" /></div>
+          </div>
+          <div class="priority-radio">
+            <span>Priority:</span>
+            <label for="low">Low</label>
+            <input type="radio" name="priority" value="low" id="low"/>
+            <label for="medium">Medium</label>
+            <input type="radio" name="priority" value="medium"/>
+            <label for="high">High</label>
+            <input type="radio" name="priority" value="high"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

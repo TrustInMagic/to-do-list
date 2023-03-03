@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+:root {
+  --header-content-light: #f3f4f6;
+  --nav-light: #f0fdf4;
+  --brand-green: #109d44;
+  --font-color: #18181b;
+  --font-color-light: #f1f5f9;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--font-color);
+}
+
+/* header */
+
+.header {
+  background-color: var(--header-content-light);
+  height: 80px;
+  border-bottom: var(--brand-green) solid 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+h1 {
+  font-size: 2.7rem;
+}
+
+.header img {
+  height: 35px;
+}
+
+.header span {
+  color: var(--brand-green);
+}
+
+.content {
+  display: flex;
+  min-height: calc(100vh - 80px);
+}
+
+/* nav */
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  gap: 40px;
+  padding: 20px;
+  background-color: var(--nav-light);
+}
+
+.nav h2 {
+  border-bottom: var(--font-color) solid 2px;
+}
+
+.nav button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-top: auto;
+  font-size: 2rem;
+}
+
+.nav img {
+  height: 25px;
+  width: 25px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+/* main-area */
+
+.main-area {
+  background-color: var(--header-content-light);
+  min-height: calc(100vh - 80px);
+  flex: 1;
+}
+
+/* modal */
+
+.add-new-modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 350px;
+  width: 700px;
+  box-shadow: 2px 2px 30px;
+  border-radius: 10px;
+  background-color: var(--header-content-light);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 0px 10px;
+  background-color: var(--brand-green);
+  font-size: 1.5rem;
+  color: var(--font-color-light)
+}
+
+.modal-content {
+  display: flex;
+  flex: 1;
+
+}
+
+.modal-nav {
+  background-color: var(--nav-light);
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.modal-content img {
+  height: 60px;
+}
+
+.modal-nav > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.task {
+  margin-left: -25px;
+}
+
+.add-new-modal .main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+  padding: 20px;
+}
+
+.add-new-modal input,
+.add-new-modal textarea {
+  font-family: inherit;
+  font-size: 100%;
+  appearance: none;
+  outline: none;
+  border: none;
+  background-color: inherit;
+  resize: none;
+}
+
+.date-container {
+  display: flex;
+}
