@@ -28,7 +28,7 @@ const taskForm = elementFromHtml(`
 `);
 
 const projectForm = elementFromHtml(`
-  <input type="text" placeholder="Title: House Renovation" required>
+  <input class="title" type="text" placeholder="Title: House Renovation" required>
   <button type="submit">Create Project</button>
 `);
 

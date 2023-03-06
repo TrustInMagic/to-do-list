@@ -64,6 +64,7 @@ function closeModal() {
   toggleBlur();
   //replacing form node with it's clone so that we remove all event listeners
   form.replaceWith(form.cloneNode(true));
+  form.reset();
 }
 
 function switchToTask() {
@@ -91,4 +92,5 @@ function switchToProject() {
 function taskOrProjectSubmit() {
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => getDataFromForms(e));
+
 }

@@ -38,10 +38,17 @@ function getDataFromTaskForm() {
     if (project.getTitle() === projectToAssignTo) {
       project.addTask(taskToAdd);
     }
-  })
+  });
 
   const projectos = projectManager.returnProjects();
-  projectos.forEach(project => console.log(project.getTasks()))
+  projectos.forEach((project) => console.log(project.getTasks()));
 }
 
-function getDataFromProjectForm() {}
+function getDataFromProjectForm() {
+  const projectTitleQuerier = document.querySelector('form .title');
+
+  const projectTitle = projectTitleQuerier.value;
+
+  const projectToAdd = new Project(projectTitle);
+  projectManager.addProject(projectToAdd);
+}
