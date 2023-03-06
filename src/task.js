@@ -1,18 +1,18 @@
 export default class Task {
-  constructor(title, project) {
+  constructor(title) {
     this.title = title;
     this.completionStatus = false;
     this.description;
     this.date;
     this.priority;
-    this.project = project
+    // this.project;
   }
 
-  set title(value) {
+  changeTitle(value) {
     this.title = value;
   }
 
-  addDescription(value) {
+  addDetails(value) {
     this.description = value;
   }
 
@@ -27,5 +27,8 @@ export default class Task {
   toggleCompletionStatus() {
     this.completionStatus = !this.completionStatus;
   }
-}
 
+  // assignToProject(value) {
+  //   this.project = value;
+  // }
+}

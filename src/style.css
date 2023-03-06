@@ -213,6 +213,7 @@ textarea {
   display: flex;
 }
 
-.priority-radio button {
+form button {
   margin-left: auto;
+  margin-top: auto;
 }

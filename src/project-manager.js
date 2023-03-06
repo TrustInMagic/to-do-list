@@ -1,4 +1,4 @@
-export default function projectManager() {
+export default (function projectManager() {
   const projects = [];
 
   const addProject = (project) => {
@@ -16,4 +16,4 @@ export default function projectManager() {
   const returnProjects = () => projects;
 
   return { addProject, removeProject, returnProjects };
-}
+})();

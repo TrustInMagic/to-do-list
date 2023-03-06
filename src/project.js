@@ -12,7 +12,11 @@ export default class Project {
     this.title = value
   }
 
-  get title() {
+  getTitle() {
     return this.title
+  }
+
+  getTasks() {
+    return this.tasks
   }
 }

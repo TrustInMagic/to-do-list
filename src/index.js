@@ -8,3 +8,4 @@ const closeModalButton = document.querySelector('.modal-header .close');
 
 addButton.addEventListener('click', () => popModal());
 closeModalButton.addEventListener('click', () => closeModal());
+

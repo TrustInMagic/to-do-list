@@ -10,13 +10,7 @@ const taskForm = elementFromHtml(`
     <label for="project">Project to assign to: </label>
     <select name="" id="project"></select>
   </div>
-  <textarea
-    name=""
-    id=""
-    cols="30"
-    rows="10"
-    placeholder="Details: e.g internet, phone, rent.">
-  </textarea>
+  <textarea cols="30" rows="10" placeholder="Details: e.g internet, phone, rent."></textarea>
   <div class="date-container">
     <label for="date">Due Date:</label>
     <div class="date"><input type="date" id="date" /></div>
@@ -33,9 +27,9 @@ const taskForm = elementFromHtml(`
   </div>
 `);
 
-
 const projectForm = elementFromHtml(`
-cacat pansat
-`)
+  <input type="text" placeholder="Title: House Renovation" required>
+  <button type="submit">Create Project</button>
+`);
 
 export { taskForm, projectForm };
