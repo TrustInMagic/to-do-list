@@ -11,6 +11,7 @@
   --font-color: #18181b;
   --font-color-light: #f1f5f9;
   --hover-nav-color: #f4f4f5;
+  --nav-active: #a7f3d0;
 }
 
 body {
@@ -102,13 +103,6 @@ h2 {
   font-weight: 900;
 }
 
-/* main-area */
-
-.main-area {
-  background-color: var(--header-content-light);
-  min-height: calc(100vh - 80px);
-  flex: 1;
-}
 
 /* modal */
 
@@ -216,4 +210,55 @@ textarea {
 form button {
   margin-left: auto;
   margin-top: auto;
+}
+
+/* project in nav bar*/
+
+.projects-area {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.projects-area .project {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  height: 30px;
+  font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dots {
+  margin-left: auto;
+}
+
+.projects-area .project:hover {
+  background-color: var(--hover-nav-color);
+}
+
+/* main-area */
+
+.main-area {
+  background-color: var(--header-content-light);
+  min-height: calc(100vh - 80px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-area-title {
+  background-color: var(--brand-green);
+  margin-top: 20px;;
+  width: calc(100% - 100px);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color-light);
+  font-size: 3rem;
 }

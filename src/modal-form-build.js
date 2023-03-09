@@ -1,4 +1,4 @@
-function elementFromHtml(html) {
+export default function elementFromHtml(html) {
   const container = document.createElement('div');
   container.innerHTML = html.trim();
   return container;
@@ -23,13 +23,13 @@ const taskForm = elementFromHtml(`
     <input type="radio" name="priority" value="medium" id="medium"/>
     <label for="high">High</label>
     <input type="radio" name="priority" value="high" id="high"/>
-    <button type="submit" class="task">Add Task</button>
+    <button type="submit" class="task task-submit">Add Task</button>
   </div>
 `);
 
 const projectForm = elementFromHtml(`
   <input class="title" type="text" placeholder="Title: House Renovation" required>
-  <button type="submit">Create Project</button>
+  <button type="submit" class="project-submit">Create Project</button>
 `);
 
 export { taskForm, projectForm };

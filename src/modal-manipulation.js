@@ -1,3 +1,4 @@
+import { buildProjectDomElement } from './dom-display-project';
 import { taskForm, projectForm } from './modal-form-build';
 import { getDataFromForms } from './data-manipulation';
 import projectManager from './project-manager';
@@ -8,9 +9,6 @@ const modal = document.querySelector('.add-new-modal');
 
 const defaultProject = new Project('Your First Project');
 projectManager.addProject(defaultProject);
-
-const fakeProject = new Project('fake project');
-projectManager.addProject(fakeProject);
 
 function toggleBlur() {
   const modal = document.querySelector('.add-new-modal');
@@ -75,6 +73,7 @@ function switchToTask() {
     form.appendChild(taskForm);
     form.className = '';
     form.classList.add('task');
+    populateProjectsDropdown();
   });
 }
 
@@ -91,6 +90,21 @@ function switchToProject() {
 
 function taskOrProjectSubmit() {
   const form = document.querySelector('form');
-  form.addEventListener('submit', (e) => getDataFromForms(e));
+  form.addEventListener('submit', (e) => {
+    getDataFromForms(e);
+    form.reset();
+    printFormSubmitStatus();
+  });
+}
 
+function printFormSubmitStatus() {
+  const form = document.querySelector('form');
+  const projectsArea = document.querySelector('.projects-area');
+
+  if (form.getAttribute('class').includes('task')) {
+    window.alert('Task added successfully');
+  } else {
+    window.alert('Project added successfully');
+    buildProjectDomElement(projectsArea);
+  }
 }

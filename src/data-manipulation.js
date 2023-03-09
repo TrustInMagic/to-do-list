@@ -40,8 +40,8 @@ function getDataFromTaskForm() {
     }
   });
 
-  const projectos = projectManager.returnProjects();
-  projectos.forEach((project) => console.log(project.getTasks()));
+  // const projectos = projectManager.returnProjects();
+  // projectos.forEach((project) => console.log(project.getTasks()));
 }
 
 function getDataFromProjectForm() {
