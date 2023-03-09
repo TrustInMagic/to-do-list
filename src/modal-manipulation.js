@@ -1,6 +1,7 @@
 import { buildProjectDomElement } from './dom-display-project';
 import { taskForm, projectForm } from './modal-form-build';
 import { getDataFromForms } from './data-manipulation';
+import populateMainArea from './populate-main-area';
 import projectManager from './project-manager';
 import Project from './project';
 export { popModal, closeModal };
@@ -28,6 +29,9 @@ function populateProjectsDropdown() {
   const dropdown = document.querySelector('.dropdown select');
   const projects = projectManager.returnProjects();
   const options = projects.map((project) => project.getTitle());
+
+  if (dropdown === null) return
+
   dropdown.innerHTML = '';
 
   for (let i = 0; i < options.length; i++) {
@@ -93,16 +97,18 @@ function taskOrProjectSubmit() {
   form.addEventListener('submit', (e) => {
     getDataFromForms(e);
     form.reset();
-    printFormSubmitStatus();
+    handleFormSubmission();
+    closeModal();
   });
 }
 
-function printFormSubmitStatus() {
+function handleFormSubmission() {
   const form = document.querySelector('form');
   const projectsArea = document.querySelector('.projects-area');
 
   if (form.getAttribute('class').includes('task')) {
     window.alert('Task added successfully');
+    populateMainArea();
   } else {
     window.alert('Project added successfully');
     buildProjectDomElement(projectsArea);

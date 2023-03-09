@@ -6,8 +6,6 @@ export function buildProjectDomElement(parent) {
   const lastProjectAdded = projects[projects.length - 1];
   const projectTitle = lastProjectAdded.getTitle();
 
-  console.log(projects);
-
   const project = elementFromHtml(`
     <div class="project"><span class="hamburger">☰</span>${projectTitle}
     <span class="dots">&#x22EE</span></div>

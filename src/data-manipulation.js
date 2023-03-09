@@ -39,9 +39,6 @@ function getDataFromTaskForm() {
       project.addTask(taskToAdd);
     }
   });
-
-  // const projectos = projectManager.returnProjects();
-  // projectos.forEach((project) => console.log(project.getTasks()));
 }
 
 function getDataFromProjectForm() {

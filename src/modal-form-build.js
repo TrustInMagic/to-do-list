@@ -18,7 +18,7 @@ const taskForm = elementFromHtml(`
   <div class="priority-radio">
     <span>Priority:</span>
     <label for="low">Low</label>
-    <input type="radio" name="priority" value="low" id="low"/>
+    <input type="radio" name="priority" value="low" id="low" checked/>
     <label for="medium">Medium</label>
     <input type="radio" name="priority" value="medium" id="medium"/>
     <label for="high">High</label>

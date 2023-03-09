@@ -19,4 +19,12 @@ export default class Project {
   getTasks() {
     return this.tasks
   }
+
+  removeCompletedTasks() {
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].completionStatus === true) {
+        this.tasks.splice(i, 1)
+      }
+    }
+  }
 }
