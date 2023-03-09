@@ -1,5 +1,7 @@
 import { buildTaskDomElement } from './dom-display-task';
 import projectManager from './project-manager';
+import isToday from 'date-fns/isToday'
+
 
 const mainAreaTitle = document.querySelector('.main-area-title');
 const mainAreaContent = document.querySelector('.main-area-content');
@@ -19,7 +21,12 @@ export function displayAllTasks() {
 }
 
 export function displayTodayTasks() {
+  mainAreaContent.innerHTML = '';
   mainAreaTitle.textContent = 'Today';
+
+  const todayTasks = [];
+
+
 }
 
 export function displayWeekTasks() {
