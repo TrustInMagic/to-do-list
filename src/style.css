@@ -12,6 +12,7 @@
   --font-color-light: #f1f5f9;
   --hover-nav-color: #f4f4f5;
   --nav-active: #a7f3d0;
+  --popup-color: #94a3b8;
 }
 
 body {
@@ -103,7 +104,6 @@ h2 {
   font-weight: 900;
 }
 
-
 /* modal */
 
 .add-new-modal {
@@ -183,7 +183,6 @@ h2 {
   padding: 20px;
 }
 
-
 .add-new-modal input,
 .add-new-modal textarea {
   font-family: inherit;
@@ -253,7 +252,7 @@ form button {
 
 .main-area-title {
   background-color: var(--brand-green);
-  margin-top: 20px;;
+  margin-top: 20px;
   width: calc(100% - 100px);
   height: 100px;
   display: flex;
@@ -297,4 +296,38 @@ form button {
 
 .task-body:hover:active {
   transform: scale(0.995);
+}
+
+/* edit and delete popup */
+
+.project-container {
+  position: relative;
+}
+
+.pop-up {
+  background-color: var(--popup-color);
+  position: absolute;
+  bottom: 30px;
+  left: 200px;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 10px;
+  padding: 10px;
+  transform: scale(0);
+}
+
+.pop-up > div {
+  cursor: pointer;
+  height: 20px;
+}
+
+.pop-up > div:hover {
+  background-color: var(--hover-nav-color);
+}
+
+.popping {
+  transform: scale(1);
 }
