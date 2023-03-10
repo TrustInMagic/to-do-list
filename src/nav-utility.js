@@ -18,11 +18,18 @@ function returnAllTasks() {
   return allTasks;
 }
 
+function handleNoTasks(taskList) {
+  if (taskList.length === 0) {
+    mainAreaContent.textContent = 'Yay! No Tasks!';
+  }
+}
+
 export function displayAllTasks() {
   mainAreaContent.innerHTML = '';
   mainAreaTitle.textContent = 'All Tasks';
 
   buildTaskDomElement(mainAreaContent, returnAllTasks());
+  handleNoTasks(returnAllTasks());
 }
 
 export function displayTodayTasks() {
@@ -38,6 +45,7 @@ export function displayTodayTasks() {
   });
 
   buildTaskDomElement(mainAreaContent, todayTasks);
+  handleNoTasks(todayTasks)
 }
 
 export function displayWeekTasks() {
@@ -55,6 +63,7 @@ export function displayWeekTasks() {
   });
 
   buildTaskDomElement(mainAreaContent, sevenDaysTasks);
+  handleNoTasks(sevenDaysTasks)
 }
 
 export function displayImportantTasks() {
@@ -71,4 +80,5 @@ export function displayImportantTasks() {
   });
 
   buildTaskDomElement(mainAreaContent, importantTasks);
+  handleNoTasks(importantTasks)
 }

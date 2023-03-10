@@ -7,7 +7,7 @@ export default (function projectManager() {
 
   const removeProject = (project) => {
     for (let i = 0; i < projects.length; i++) {
-      if (projects[i].title === project) {
+      if (projects[i].title === project.title) {
         projects.splice(i, 1);
       }
     }

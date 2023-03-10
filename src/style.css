@@ -211,7 +211,7 @@ form button {
   margin-top: auto;
 }
 
-/* project in nav bar*/
+/* project element*/
 
 .projects-area {
   margin-top: 10px;
@@ -331,3 +331,4 @@ form button {
 .popping {
   transform: scale(1);
 }
+
