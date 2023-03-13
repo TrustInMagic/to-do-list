@@ -1,4 +1,5 @@
 import elementFromHtml from './modal-form-build';
+import { buildTaskEditInterface, deleteTask } from './edit-task';
 
 export function buildTaskDomElement(parent, tasks) {
   for (let i = 0; i < tasks.length; i++) {
@@ -16,7 +17,12 @@ export function buildTaskDomElement(parent, tasks) {
       <div class="right-container">
         <div class="task-due-date task-due-date-${i}">${taskDueDate}</div>
         <div class="flag-container flag-container-${i}"></div>
-        <div class="task-dots task-dots-${i}">&#x22EE</div>
+        <div class="task-dots task-dots-${i}">&#x22EE
+          <div class="pop-up task-pop-up-${i}">
+            <div class="edit task-edit-${i}">Rename</div>
+            <div class="delete task-delete-${i}">Delete</div>
+          </div>
+        </div>
       </div>
     </div>
   `);
@@ -41,9 +47,21 @@ export function buildTaskDomElement(parent, tasks) {
   `);
 
     parent.appendChild(taskElement);
-    const flagContainer = document.querySelector(`.flag-container-${i}`);
-    const taskDomElement = document.querySelector(`.task-body-${i}`);
-    const detailsElement = document.querySelector(`.task-details-${i}`);
+    const flagContainer = taskElement.querySelector('.flag-container');
+    const taskDomElement = taskElement.querySelector('.task-body');
+    const detailsElement = taskElement.querySelector('.task-details');
+    const editTask = taskElement.querySelector('.task-dots');
+    const renameButton = taskElement.querySelector('.edit');
+    const deleteButton = taskElement.querySelector('.delete');
+    const popUp = taskElement.querySelector('.pop-up');
+
+    renameButton.addEventListener('click', (e) => buildTaskEditInterface(e));
+    deleteButton.addEventListener('click', (e) => deleteTask(e));
+    editTask.addEventListener('click', () => popUp.classList.add('popping'));
+
+    window.addEventListener('click', (e) => {
+      if (e.target !== editTask) popUp.classList.remove('popping');
+    });
 
     flagContainer.appendChild(flag);
     taskDomElement.addEventListener('click', () =>

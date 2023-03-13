@@ -17,11 +17,12 @@ export function buildProjectDomElement(parent) {
       <div class="project project-${projectIndex}">
         <span class="hamburger">☰</span>
         <div>${projectTitle}</div>
-        <span class="dots dots-${projectIndex}">&#x22EE</span>
-      </div>
-      <div class="pop-up pop-up-${projectIndex}">
-        <div class="edit edit-${projectIndex}">Rename</div>
-        <div class="delete delete-${projectIndex}">Delete</div>
+        <span class="dots dots-${projectIndex}">&#x22EE
+          <div class="pop-up pop-up-${projectIndex}">
+            <div class="edit edit-${projectIndex}">Rename</div>
+            <div class="delete delete-${projectIndex}">Delete</div>
+          </div>
+        </span>
       </div>
     </div>
   `);

@@ -5,7 +5,7 @@ export default class Task {
     this.description;
     this.date;
     this.priority;
-    // this.project;
+    this.id;
   }
 
   changeTitle(value) {
@@ -27,8 +27,4 @@ export default class Task {
   toggleCompletionStatus() {
     this.completionStatus = !this.completionStatus;
   }
-
-  // assignToProject(value) {
-  //   this.project = value;
-  // }
 }

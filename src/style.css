@@ -323,23 +323,22 @@ form button {
 
 /* edit and delete popup */
 
-.project-container {
-  position: relative;
-}
-
 .pop-up {
   background-color: var(--popup-color);
   position: absolute;
-  bottom: 30px;
-  left: 200px;
-  height: 80px;
-  width: 80px;
+  bottom: 20px;
+  left: 5px;
+  height: 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   border-radius: 10px;
   padding: 10px;
   transform: scale(0);
+}
+
+.project-container .dots {
+  position: relative;
 }
 
 .pop-up > div {
@@ -353,4 +352,15 @@ form button {
 
 .popping {
   transform: scale(1);
+}
+
+.task-dots {
+  position: relative;
+}
+
+/* edit and delete popup (task) */
+
+.task-body .pop-up {
+  left: 10px;
+  bottom: 20px;
 }
