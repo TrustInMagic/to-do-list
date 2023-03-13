@@ -7,17 +7,6 @@ import isBefore from 'date-fns/isBefore';
 const mainAreaTitle = document.querySelector('.main-area-title');
 const mainAreaContent = document.querySelector('.main-area-content');
 
-function returnAllTasks() {
-  const allTasks = [];
-  const projects = projectManager.returnProjects();
-
-  projects.forEach((project) => {
-    allTasks.push(...project.getTasks());
-  });
-
-  return allTasks;
-}
-
 function handleNoTasks(taskList) {
   if (taskList.length === 0) {
     mainAreaContent.textContent = 'Yay! No Tasks!';
@@ -28,15 +17,15 @@ export function displayAllTasks() {
   mainAreaContent.innerHTML = '';
   mainAreaTitle.textContent = 'All Tasks';
 
-  buildTaskDomElement(mainAreaContent, returnAllTasks());
-  handleNoTasks(returnAllTasks());
+  buildTaskDomElement(mainAreaContent, projectManager.returnAllTasks());
+  handleNoTasks(projectManager.returnAllTasks());
 }
 
 export function displayTodayTasks() {
   mainAreaContent.innerHTML = '';
   mainAreaTitle.textContent = 'Today';
 
-  const allTasks = returnAllTasks();
+  const allTasks = projectManager.returnAllTasks();
   let todayTasks = [];
 
   allTasks.forEach((task) => {
@@ -52,7 +41,7 @@ export function displayWeekTasks() {
   mainAreaContent.innerHTML = '';
   mainAreaTitle.textContent = 'Next 7 Days';
 
-  const allTasks = returnAllTasks();
+  const allTasks = projectManager.returnAllTasks();
   let sevenDaysTasks = [];
 
   allTasks.forEach((task) => {
@@ -70,7 +59,7 @@ export function displayImportantTasks() {
   mainAreaContent.innerHTML = '';
   mainAreaTitle.textContent = 'Important';
 
-  const allTasks = returnAllTasks();
+  const allTasks = projectManager.returnAllTasks();
   let importantTasks = [];
 
   allTasks.forEach((task) => {

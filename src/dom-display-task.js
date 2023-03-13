@@ -19,7 +19,7 @@ export function buildTaskDomElement(parent, tasks) {
         <div class="flag-container flag-container-${i}"></div>
         <div class="task-dots task-dots-${i}">&#x22EE
           <div class="pop-up task-pop-up-${i}">
-            <div class="edit task-edit-${i}">Rename</div>
+            <div class="edit task-edit-${i}">Edit</div>
             <div class="delete task-delete-${i}">Delete</div>
           </div>
         </div>

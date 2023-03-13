@@ -11,6 +11,11 @@ const modal = document.querySelector('.add-new-modal');
 const defaultProject = new Project('Your First Project');
 projectManager.addProject(defaultProject);
 
+function utilityRemoveActiveClassFromModal() {
+  const modalElements = document.querySelectorAll('.add-new-modal div');
+  modalElements.forEach((element) => element.classList.remove('active'));
+}
+
 function toggleBlur() {
   const modal = document.querySelector('.add-new-modal');
   const header = document.querySelector('.header');
@@ -30,7 +35,7 @@ function populateProjectsDropdown() {
   const projects = projectManager.returnProjects();
   const options = projects.map((project) => project.getTitle());
 
-  if (dropdown === null) return
+  if (dropdown === null) return;
 
   dropdown.innerHTML = '';
 
@@ -45,6 +50,7 @@ function populateProjectsDropdown() {
 
 function popModal() {
   const form = document.querySelector('form');
+  const taskButton = document.querySelector('.task');
   modal.classList.add('popping');
   modal.style.cssText = 'transform: scale(1)';
   toggleBlur();
@@ -57,6 +63,9 @@ function popModal() {
   switchToTask();
   switchToProject();
   taskOrProjectSubmit();
+
+  utilityRemoveActiveClassFromModal();
+  taskButton.classList.add('active');
 }
 
 function closeModal() {
@@ -78,6 +87,8 @@ function switchToTask() {
     form.className = '';
     form.classList.add('task');
     populateProjectsDropdown();
+    utilityRemoveActiveClassFromModal();
+    taskButton.classList.add('active');
   });
 }
 
@@ -89,6 +100,8 @@ function switchToProject() {
     form.appendChild(projectForm);
     form.className = '';
     form.classList.add('project');
+    utilityRemoveActiveClassFromModal();
+    projectButton.classList.add('active');
   });
 }
 

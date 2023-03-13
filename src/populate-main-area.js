@@ -4,10 +4,12 @@ import {
   displayTodayTasks,
   displayWeekTasks,
 } from './nav-utility';
+import { renderProjectTasks } from './dom-display-project';
 
 // using this to help populate the main area with the adequate filtered content
 export default function populateMainArea() {
   const navSections = document.querySelectorAll('.home > div');
+  const projectDomElements = document.querySelector('.projects-area > div > div')
   const functionToRunDictionary = {
     'tasks active': displayAllTasks,
     'today active': displayTodayTasks,
@@ -21,4 +23,6 @@ export default function populateMainArea() {
       functionToRunDictionary[classList]()
     }
   }
+
+  console.log(projectDomElements)
 }

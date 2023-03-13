@@ -20,6 +20,10 @@ body {
   color: var(--font-color);
 }
 
+* .active {
+  background-color: pink !important;
+}
+
 /* header */
 
 .header {
@@ -235,7 +239,7 @@ form button {
   margin-left: auto;
 }
 
-.projects-area .project:hover {
+.project-container:hover {
   background-color: var(--hover-nav-color);
 }
 

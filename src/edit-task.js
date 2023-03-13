@@ -10,6 +10,8 @@ export function buildTaskEditInterface(e) {
   const taskToEdit = allTasks[clickedTaskIndex];
   const body = document.querySelector('body');
 
+  console.log(taskToEdit)
+
   const taskTitle = taskToEdit.title;
   const taskDetails = taskToEdit.description;
   const taskDate = taskToEdit.date;
@@ -129,6 +131,9 @@ export function deleteTask(e) {
     clickedTaskUniqueClass[clickedTaskUniqueClass.length - 1];
   const allTasks = projectManager.returnAllTasks();
   const taskToDelete = allTasks[clickedTaskIndex];
+
+  console.log(taskToDelete);
+
   //remove project from business logic
   taskToDelete.completionStatus = true;
   const allProjects = projectManager.returnProjects();

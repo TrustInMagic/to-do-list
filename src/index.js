@@ -14,45 +14,37 @@ const allTasks = document.querySelector('.tasks');
 const today = document.querySelector('.today');
 const nextWeek = document.querySelector('.seven-days');
 const important = document.querySelector('.important');
-const navButtons = document.querySelectorAll('.home > div');
 
 addButton.addEventListener('click', () => popModal());
 closeModalButton.addEventListener('click', () => closeModal());
 
+export function utilityRemoveActiveClass() {
+  const allElements = document.querySelectorAll('div');
+  allElements.forEach((element) => element.classList.remove('active'));
+}
+
 allTasks.addEventListener('click', () => {
   displayAllTasks();
-  navButtons.forEach((button) => {
-    if (button.classList.contains('tasks')) {
-      button.classList.add('active');
-    } else button.classList.remove('active');
-  });
+  utilityRemoveActiveClass();
+  allTasks.classList.add('active');
 });
 
 today.addEventListener('click', () => {
   displayTodayTasks();
-  navButtons.forEach((button) => {
-    if (button.classList.contains('today')) {
-      button.classList.add('active');
-    } else button.classList.remove('active');
-  });
+  utilityRemoveActiveClass();
+  today.classList.add('active');
 });
 
 nextWeek.addEventListener('click', () => {
   displayWeekTasks();
-  navButtons.forEach((button) => {
-    if (button.classList.contains('seven-days')) {
-      button.classList.add('active');
-    } else button.classList.remove('active');
-  });
+  utilityRemoveActiveClass();
+  nextWeek.classList.add('active');
 });
 
 important.addEventListener('click', () => {
   displayImportantTasks();
-  navButtons.forEach((button) => {
-    if (button.classList.contains('important')) {
-      button.classList.add('active');
-    } else button.classList.remove('active');
-  });
+  utilityRemoveActiveClass();
+  important.classList.add('active');
 });
 
 buildProjectDomElement(projectsArea);

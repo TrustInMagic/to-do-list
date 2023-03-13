@@ -2,6 +2,7 @@ import elementFromHtml from './modal-form-build';
 import projectManager from './project-manager';
 import { buildTaskDomElement } from './dom-display-task';
 import { buildEditInterface, deleteProject } from './edit-project';
+import { utilityRemoveActiveClass } from './index';
 
 const mainAreaContent = document.querySelector('.main-area-content');
 const mainAreaTitle = document.querySelector('.main-area-title');
@@ -28,7 +29,13 @@ export function buildProjectDomElement(parent) {
   `);
 
   parent.appendChild(project);
-  project.addEventListener('click', () => renderProjectTasks(lastProjectAdded));
+
+  const projectContainer = project.querySelector('.project-container');
+  projectContainer.addEventListener('click', () => {
+    renderProjectTasks(lastProjectAdded);
+    utilityRemoveActiveClass();
+    projectContainer.classList.add('active');
+  });
 
   const projectEdit = document.querySelector(`.dots-${projectIndex}`);
   const popUp = document.querySelector(`.pop-up-${projectIndex}`);
@@ -36,7 +43,7 @@ export function buildProjectDomElement(parent) {
   const deleteButton = document.querySelector(`.delete-${projectIndex}`);
 
   renameButton.addEventListener('click', (e) => buildEditInterface(e));
-  deleteButton.addEventListener('click', (e) => deleteProject(e))
+  deleteButton.addEventListener('click', (e) => deleteProject(e));
   projectEdit.addEventListener('click', () => popUp.classList.add('popping'));
 
   window.addEventListener('click', (e) => {
@@ -44,7 +51,7 @@ export function buildProjectDomElement(parent) {
   });
 }
 
-function renderProjectTasks(project) {
+export function renderProjectTasks(project) {
   const projectTasks = project.getTasks();
   const projectTitle = project.getTitle();
   mainAreaContent.innerHTML = '';
