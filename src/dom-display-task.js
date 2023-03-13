@@ -55,8 +55,8 @@ export function buildTaskDomElement(parent, tasks) {
     const deleteButton = taskElement.querySelector('.delete');
     const popUp = taskElement.querySelector('.pop-up');
 
-    renameButton.addEventListener('click', (e) => buildTaskEditInterface(e));
-    deleteButton.addEventListener('click', (e) => deleteTask(e));
+    renameButton.addEventListener('click', buildTaskEditInterface);
+    deleteButton.addEventListener('click', deleteTask);
     editTask.addEventListener('click', () => popUp.classList.add('popping'));
 
     window.addEventListener('click', (e) => {

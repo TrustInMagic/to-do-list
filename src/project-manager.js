@@ -13,7 +13,16 @@ export default (function projectManager() {
     }
   };
 
+  const returnAllTasks = () => {
+    const allTasks = [];
+    for (let project of projects) {
+      allTasks.push(...project.getTasks())
+    }
+
+    return allTasks
+  }
+
   const returnProjects = () => projects;
 
-  return { addProject, removeProject, returnProjects };
+  return { addProject, removeProject, returnProjects , returnAllTasks};
 })();

@@ -36,16 +36,16 @@ export function buildEditInterface(e) {
   `);
 
   body.appendChild(editProjectModal);
-  const projectEditModal = document.querySelector(
+  const projectEditModal = editProjectModal.querySelector(
     `.project-edit-modal-${clickedProjectIndex}`
   );
-  const closeButton = document.querySelector(
+  const closeButton = editProjectModal.querySelector(
     `.close-edit-project-${clickedProjectIndex}`
   );
-  const submitForm = document.querySelector(
+  const submitForm = editProjectModal.querySelector(
     `.project-edit-form-${clickedProjectIndex}`
   );
-  const editedTitleInput = document.querySelector(
+  const editedTitleInput = editProjectModal.querySelector(
     `.edit-title-${clickedProjectIndex}`
   );
 
