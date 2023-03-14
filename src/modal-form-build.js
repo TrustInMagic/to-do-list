@@ -13,12 +13,12 @@ const taskForm = elementFromHtml(`
   <textarea cols="30" rows="10" placeholder="Details: e.g internet, phone, rent."></textarea>
   <div class="date-container">
     <label for="date">Due Date:</label>
-    <div class="date"><input type="date" id="date" /></div>
+    <div class="date"><input type="date" id="date" required/></div>
   </div>
   <div class="priority-radio">
     <span>Priority:</span>
     <div class="radio-button radio-low">
-      <input type="radio" id="low" name="priority" value="low"/>
+      <input type="radio" id="low" name="priority" value="low" checked/>
       <label for="low">LOW</label>
     </div>
     <div class="radio-button radio-medium">

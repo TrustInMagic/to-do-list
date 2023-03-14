@@ -55,10 +55,14 @@ export function buildTaskDomElement(parent, tasks) {
     const renameButton = taskElement.querySelector('.edit');
     const deleteButton = taskElement.querySelector('.delete');
     const popUp = taskElement.querySelector('.pop-up');
+    const taskCheck = taskElement.querySelector('.task-check');
 
     renameButton.addEventListener('click', buildTaskEditInterface);
     deleteButton.addEventListener('click', deleteTask);
     editTask.addEventListener('click', () => popUp.classList.add('popping'));
+    taskCheck.addEventListener('click', () =>
+      handleTaskCompletion(taskElement)
+    );
 
     window.addEventListener('click', (e) => {
       if (e.target !== editTask) popUp.classList.remove('popping');
@@ -69,4 +73,13 @@ export function buildTaskDomElement(parent, tasks) {
       detailsElement.classList.toggle('show-details')
     );
   }
+}
+
+function handleTaskCompletion(taskElement) {
+  const taskTitle = taskElement.querySelector('.task-title');
+  const taskCheck = taskElement.querySelector('.task-check');
+
+  if (taskCheck.checked) {
+    taskTitle.innerHTML = `<s>${taskTitle.textContent}</s>`;
+  } else taskTitle.innerHTML = taskTitle.textContent
 }

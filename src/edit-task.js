@@ -54,7 +54,7 @@ export function buildTaskEditInterface(e) {
                 <input type="radio" id="high" name="priority" value="high"/>
                 <label for="high">HIGH</label>
               </div>
-              <button type="submit" class="task task-submit">Add Task</button>
+              <button type="submit" class="task task-submit">Edit Task</button>
             </div>
           </div>
         </form>
