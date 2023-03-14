@@ -42,6 +42,5 @@ export default function populateMainArea() {
   }
 
   //if no nav button or project is selected, switch to All Tasks 'tab'
-  console.log('cacat');
   displayAllTasks();
 }

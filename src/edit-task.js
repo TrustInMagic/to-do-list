@@ -3,11 +3,11 @@ import elementFromHtml from './modal-form-build';
 import populateMainArea from './populate-main-area';
 
 export function buildTaskEditInterface(e) {
-  const clickedTaskId = e.target.getAttribute('data-id')
+  const clickedTaskId = e.target.getAttribute('data-id');
   const allTasks = projectManager.returnAllTasks();
-  let taskToEdit
+  let taskToEdit;
   for (let task of allTasks) {
-    if (task.id === clickedTaskId) taskToEdit = task
+    if (task.id === clickedTaskId) taskToEdit = task;
   }
 
   const body = document.querySelector('body');
@@ -16,10 +16,10 @@ export function buildTaskEditInterface(e) {
   const taskDate = taskToEdit.date;
 
   const editTaskModal = elementFromHtml(`
-    <div class="add-new-modal task-edit-modal-${clickedTaskId}">
+    <div class="add-new-modal task-edit-modal">
       <div class="modal-header">
         <h3>Edit Task</h3>
-        <div class="close close-edit-task-${clickedTaskId}">&#x2715</div>
+        <div class="close close-edit-task">&#x2715</div>
       </div>
       <div class="modal-content">
         <div class="modal-nav">
@@ -28,16 +28,16 @@ export function buildTaskEditInterface(e) {
             <div>Task</div>
           </div>
         </div>
-        <form action="" class="task-edit-form-${clickedTaskId}">
+        <form action="" class="task-edit-form">
           <div>
             <input type="text" id="title" placeholder="Title: Pay bills"
-            class="edit-title-${clickedTaskId}" value="${taskTitle}" required/>
+            class="edit-title" value="${taskTitle}" required/>
             <textarea cols="30" rows="10" placeholder="Details: e.g internet, phone, rent."
-            class="edit-details-${clickedTaskId}">${taskDetails}</textarea>
+            class="edit-details">${taskDetails}</textarea>
             <div class="date-container">
               <label for="date">Due Date:</label>
               <div class="date"><input type="date" id="date"
-              class="edit-date-${clickedTaskId}" value="${taskDate}"/>
+              class="edit-date" value="${taskDate}"/>
               </div>
             </div>
             <div class="priority-radio">
@@ -80,23 +80,12 @@ export function buildTaskEditInterface(e) {
     }
   })();
 
-  const taskEditModal = editTaskModal.querySelector(
-    `.task-edit-modal-${clickedTaskId}`
-  );
-  const closeButton = editTaskModal.querySelector(
-    `.close-edit-task-${clickedTaskId}`
-  );
-  const submitForm = editTaskModal.querySelector(
-    `.task-edit-form-${clickedTaskId}`
-  );
-  const editedTitleInput = editTaskModal.querySelector(
-    `.edit-title-${clickedTaskId}`
-  );
-  const editedDetailsInput = editTaskModal.querySelector(
-    `.edit-title-${clickedTaskId}`
-  );
-  const editedDateInput = editTaskModal.querySelector(`
-  .edit-date-${clickedTaskId}`);
+  const taskEditModal = editTaskModal.querySelector('.task-edit-modal');
+  const closeButton = editTaskModal.querySelector('.close-edit-task');
+  const submitForm = editTaskModal.querySelector('.task-edit-form');
+  const editedTitleInput = editTaskModal.querySelector('.edit-title');
+  const editedDetailsInput = editTaskModal.querySelector('.edit-details');
+  const editedDateInput = editTaskModal.querySelector('.edit-date');
 
   taskEditModal.style.cssText = 'transform: scale(1)';
   closeButton.addEventListener('click', () => {
@@ -134,7 +123,7 @@ export function deleteTask(e) {
   //remove project from business logic
   taskToDelete.completionStatus = true;
   const allProjects = projectManager.returnProjects();
-  allProjects.forEach((project) => project.removeCompletedTasks())  
+  allProjects.forEach((project) => project.removeCompletedTasks());
   //remove project from DOM
   populateMainArea();
 }

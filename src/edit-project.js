@@ -1,6 +1,6 @@
 import elementFromHtml from './modal-form-build';
 import projectManager from './project-manager';
-import populateMainArea from './populate-main-area';
+import { displayAllTasks } from './nav-utility'
 
 export function buildEditInterface(e) {
   const clickedProjectId = e.target.getAttribute('data-id');
@@ -68,11 +68,10 @@ export function buildEditInterface(e) {
 
     projectEditModal.style.cssText = 'transform: scale(0)';
   });
-
-  console.log(projectManager.returnProjects())
 }
 
 export function deleteProject(e) {
+  e.stopPropagation();
   const clickedProjectId = e.target.getAttribute('data-id');
   const allProjects = projectManager.returnProjects();
 
@@ -85,7 +84,7 @@ export function deleteProject(e) {
   projectManager.removeProject(projectToDelete)
   //remove project from DOM
   removeProjectFromDom(clickedProjectId)
-  populateMainArea()
+  displayAllTasks()
 }
 
 function editProjectNameFromDom(id, editValue) {

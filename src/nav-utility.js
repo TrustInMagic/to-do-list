@@ -14,9 +14,10 @@ function handleNoTasks(taskList) {
 }
 
 export function displayAllTasks() {
+  const allTasksButton = document.querySelector('.tasks')
   mainAreaContent.innerHTML = '';
   mainAreaTitle.textContent = 'All Tasks';
-
+  allTasksButton.classList.add('active')
   buildTaskDomElement(mainAreaContent, projectManager.returnAllTasks());
   handleNoTasks(projectManager.returnAllTasks());
 }

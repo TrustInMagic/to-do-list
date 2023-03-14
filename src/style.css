@@ -6,7 +6,7 @@
 
 :root {
   --header-content-light: #f3f4f6;
-  --nav-light: #f8fafc;
+  --nav-light: #ffffff;
   --brand-green: #059669;
   --font-color: #44403c;
   --font-color-light: #f1f5f9;
@@ -81,6 +81,20 @@ h1 {
   margin-top: auto;
   font-size: 2rem;
   cursor: pointer;
+  background-color: var(--nav-active);
+  border: none;
+  box-shadow: 2px 2px 5px;
+  transition: all 0.3s;
+  color: var(--font-color)
+}
+
+.nav button:active {
+  transform: scale(0.95);
+}
+
+.nav button:hover {
+  transform: rotate(90deg);
+  transition: all 0.3s;
 }
 
 .nav img {
@@ -125,7 +139,7 @@ h2 {
   top: 0;
   bottom: 0;
   margin: auto;
-  height: 380px;
+  height: 400px;
   max-width: 700px;
   box-shadow: 2px 2px 30px;
   border-radius: 10px;
@@ -191,6 +205,10 @@ h2 {
   flex: 1;
   gap: 10px;
   padding: 20px;
+}
+
+.task-edit-form > div {
+  justify-content: space-between;
 }
 
 .add-new-modal input,
@@ -277,29 +295,40 @@ form button {
   align-items: center;
   color: var(--font-color-light);
   font-size: 3rem;
+  font-weight: 600;
 }
 
 .main-area-content {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 30px;
   background-color: var(--header-content-light);
   width: calc(100% - 100px);
   height: 100%;
   gap: 10px;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 /* task element */
 
-.task-body {
-  border: solid 1px;
+.main-area-content > div {
   width: 100%;
-  border-radius: 5px;
+}
+
+.task-body {
+  width: 100%;
+  border-radius: 8px;
   padding: 10px 10px;
   display: grid;
   grid-template-columns: 0.2fr 3fr 0.8fr;
   align-items: center;
+  background: linear-gradient(#ffffff,#d7dde8);
+  box-shadow: 2px 2px 5px;
+  font-size: 1rem;
 }
+
 
 .task-body:hover {
   cursor: pointer;

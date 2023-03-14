@@ -33,9 +33,6 @@ export function buildProjectDomElement(parent) {
 
   const projectContainer = project.querySelector('.project-container');
   projectContainer.addEventListener('click', () => {
-
-    console.log(lastProjectAdded)
-    
     renderProjectTasks(lastProjectAdded);
     utilityRemoveActiveClass();
     projectContainer.classList.add('active');
@@ -46,8 +43,8 @@ export function buildProjectDomElement(parent) {
   const renameButton = project.querySelector('.edit');
   const deleteButton = project.querySelector('.delete');
 
-  renameButton.addEventListener('click', (e) => buildEditInterface(e));
-  deleteButton.addEventListener('click', (e) => deleteProject(e));
+  renameButton.addEventListener('click', buildEditInterface);
+  deleteButton.addEventListener('click', deleteProject);
   projectEdit.addEventListener('click', () => popUp.classList.add('popping'));
 
   window.addEventListener('click', (e) => {
