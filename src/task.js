@@ -5,7 +5,7 @@ export default class Task {
     this.description;
     this.date;
     this.priority;
-    this.id;
+    this.generateId();
   }
 
   changeTitle(value) {
@@ -26,5 +26,9 @@ export default class Task {
 
   toggleCompletionStatus() {
     this.completionStatus = !this.completionStatus;
+  }
+
+  generateId() {
+    this.id = `tsk-id${Math.random().toString(16).slice(2)}`;
   }
 }

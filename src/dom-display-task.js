@@ -7,20 +7,21 @@ export function buildTaskDomElement(parent, tasks) {
     const taskDetails = tasks[i].description;
     const taskDueDate = tasks[i].date;
     const taskPriority = tasks[i].priority;
+    const taskId = tasks[i].id;
     let flagColor;
 
     let taskElement = elementFromHtml(`
-    <div class="task-body task-body-${i}">
-      <input type="checkbox" class="task-check task-check-${i}">
-      <span class="task-title task-title-${i}">${taskTitle}</span>
-      <div class="task-details task-details-${i}">${taskDetails}</div>
+    <div class="task-body" data-id="${taskId}">
+      <input type="checkbox" class="task-check" data-id="${taskId}">
+      <span class="task-title" data-id="${taskId}">${taskTitle}</span>
+      <div class="task-details" data-id="${taskId}">${taskDetails}</div>
       <div class="right-container">
-        <div class="task-due-date task-due-date-${i}">${taskDueDate}</div>
-        <div class="flag-container flag-container-${i}"></div>
-        <div class="task-dots task-dots-${i}">&#x22EE
-          <div class="pop-up task-pop-up-${i}">
-            <div class="edit task-edit-${i}">Edit</div>
-            <div class="delete task-delete-${i}">Delete</div>
+        <div class="task-due-date" data-id="${taskId}">${taskDueDate}</div>
+        <div class="flag-container" data-id="${taskId}"></div>
+        <div class="task-dots" data-id="${taskId}">&#x22EE
+          <div class="pop-up" data-id="${taskId}">
+            <div class="edit" data-id="${taskId}">Edit</div>
+            <div class="delete" data-id="${taskId}">Delete</div>
           </div>
         </div>
       </div>

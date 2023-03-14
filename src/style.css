@@ -6,22 +6,28 @@
 
 :root {
   --header-content-light: #f3f4f6;
-  --nav-light: #f0fdf4;
-  --brand-green: #109d44;
-  --font-color: #18181b;
+  --nav-light: #f8fafc;
+  --brand-green: #059669;
+  --font-color: #44403c;
   --font-color-light: #f1f5f9;
-  --hover-nav-color: #f4f4f5;
+  --hover-nav-color: #e7e5e4;
   --nav-active: #a7f3d0;
-  --popup-color: #94a3b8;
+  --popup-color: #a1a1aa;
 }
 
 body {
   min-height: 100vh;
   color: var(--font-color);
+  font-family: sono, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 * .active {
-  background-color: pink !important;
+  background-color: var(--nav-active)!important;
+}
+
+@font-face {
+  font-family: sono;
+  src: url(./assets/Exo2-VariableFont_wght.ttf);
 }
 
 /* header */
@@ -233,6 +239,13 @@ form button {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border-radius: 10px;
+}
+
+.project-container {
+  border-radius: 10px;
+  width: 100%;
+  padding: 3px;
 }
 
 .dots {
@@ -332,7 +345,7 @@ form button {
   position: absolute;
   bottom: 20px;
   left: 5px;
-  height: 70px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

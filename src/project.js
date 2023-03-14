@@ -2,6 +2,7 @@ export default class Project {
   constructor(title) {
     this.title = title;
     this.tasks = [];
+    this.generateId();
   }
 
   addTask(task) {
@@ -18,6 +19,10 @@ export default class Project {
 
   getTasks() {
     return this.tasks
+  }
+
+  generateId() {
+    this.id = `prj-id${Math.random().toString(16).slice(2)}`
   }
 
   removeCompletedTasks() {

@@ -11,17 +11,18 @@ export function buildProjectDomElement(parent) {
   const projects = projectManager.returnProjects();
   const lastProjectAdded = projects[projects.length - 1];
   const projectTitle = lastProjectAdded.getTitle();
-  const projectIndex = projects.indexOf(lastProjectAdded);
+  const projectId = lastProjectAdded.id;
+  
 
   const project = elementFromHtml(`
-    <div class="project-container project-container-${projectIndex}">
-      <div class="project project-${projectIndex}">
+    <div class="project-container" data-id="${projectId}">
+      <div class="project" data-id="${projectId}">
         <span class="hamburger">☰</span>
         <div>${projectTitle}</div>
-        <span class="dots dots-${projectIndex}">&#x22EE
-          <div class="pop-up pop-up-${projectIndex}">
-            <div class="edit edit-${projectIndex}">Rename</div>
-            <div class="delete delete-${projectIndex}">Delete</div>
+        <span class="dots" data-id="${projectId}">&#x22EE
+          <div class="pop-up" data-id="${projectId}">
+            <div class="edit" data-id="${projectId}">Rename</div>
+            <div class="delete" data-id="${projectId}">Delete</div>
           </div>
         </span>
       </div>
@@ -32,15 +33,18 @@ export function buildProjectDomElement(parent) {
 
   const projectContainer = project.querySelector('.project-container');
   projectContainer.addEventListener('click', () => {
+
+    console.log(lastProjectAdded)
+    
     renderProjectTasks(lastProjectAdded);
     utilityRemoveActiveClass();
     projectContainer.classList.add('active');
   });
 
-  const projectEdit = document.querySelector(`.dots-${projectIndex}`);
-  const popUp = document.querySelector(`.pop-up-${projectIndex}`);
-  const renameButton = document.querySelector(`.edit-${projectIndex}`);
-  const deleteButton = document.querySelector(`.delete-${projectIndex}`);
+  const projectEdit = project.querySelector('.dots');
+  const popUp = project.querySelector('.pop-up');
+  const renameButton = project.querySelector('.edit');
+  const deleteButton = project.querySelector('.delete');
 
   renameButton.addEventListener('click', (e) => buildEditInterface(e));
   deleteButton.addEventListener('click', (e) => deleteProject(e));

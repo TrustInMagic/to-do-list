@@ -3,24 +3,23 @@ import elementFromHtml from './modal-form-build';
 import populateMainArea from './populate-main-area';
 
 export function buildTaskEditInterface(e) {
-  const clickedTaskUniqueClass = e.target.classList[1];
-  const clickedTaskIndex =
-    clickedTaskUniqueClass[clickedTaskUniqueClass.length - 1];
+  const clickedTaskId = e.target.getAttribute('data-id')
   const allTasks = projectManager.returnAllTasks();
-  const taskToEdit = allTasks[clickedTaskIndex];
+  let taskToEdit
+  for (let task of allTasks) {
+    if (task.id === clickedTaskId) taskToEdit = task
+  }
+
   const body = document.querySelector('body');
-
-  console.log(taskToEdit)
-
   const taskTitle = taskToEdit.title;
   const taskDetails = taskToEdit.description;
   const taskDate = taskToEdit.date;
 
   const editTaskModal = elementFromHtml(`
-    <div class="add-new-modal task-edit-modal-${clickedTaskIndex}">
+    <div class="add-new-modal task-edit-modal-${clickedTaskId}">
       <div class="modal-header">
         <h3>Edit Task</h3>
-        <div class="close close-edit-task-${clickedTaskIndex}">&#x2715</div>
+        <div class="close close-edit-task-${clickedTaskId}">&#x2715</div>
       </div>
       <div class="modal-content">
         <div class="modal-nav">
@@ -29,16 +28,16 @@ export function buildTaskEditInterface(e) {
             <div>Task</div>
           </div>
         </div>
-        <form action="" class="task-edit-form-${clickedTaskIndex}">
+        <form action="" class="task-edit-form-${clickedTaskId}">
           <div>
             <input type="text" id="title" placeholder="Title: Pay bills"
-            class="edit-title-${clickedTaskIndex}" value="${taskTitle}" required/>
+            class="edit-title-${clickedTaskId}" value="${taskTitle}" required/>
             <textarea cols="30" rows="10" placeholder="Details: e.g internet, phone, rent."
-            class="edit-details-${clickedTaskIndex}">${taskDetails}</textarea>
+            class="edit-details-${clickedTaskId}">${taskDetails}</textarea>
             <div class="date-container">
               <label for="date">Due Date:</label>
               <div class="date"><input type="date" id="date"
-              class="edit-date-${clickedTaskIndex}" value="${taskDate}"/>
+              class="edit-date-${clickedTaskId}" value="${taskDate}"/>
               </div>
             </div>
             <div class="priority-radio">
@@ -82,22 +81,22 @@ export function buildTaskEditInterface(e) {
   })();
 
   const taskEditModal = editTaskModal.querySelector(
-    `.task-edit-modal-${clickedTaskIndex}`
+    `.task-edit-modal-${clickedTaskId}`
   );
   const closeButton = editTaskModal.querySelector(
-    `.close-edit-task-${clickedTaskIndex}`
+    `.close-edit-task-${clickedTaskId}`
   );
   const submitForm = editTaskModal.querySelector(
-    `.task-edit-form-${clickedTaskIndex}`
+    `.task-edit-form-${clickedTaskId}`
   );
   const editedTitleInput = editTaskModal.querySelector(
-    `.edit-title-${clickedTaskIndex}`
+    `.edit-title-${clickedTaskId}`
   );
   const editedDetailsInput = editTaskModal.querySelector(
-    `.edit-title-${clickedTaskIndex}`
+    `.edit-title-${clickedTaskId}`
   );
   const editedDateInput = editTaskModal.querySelector(`
-  .edit-date-${clickedTaskIndex}`);
+  .edit-date-${clickedTaskId}`);
 
   taskEditModal.style.cssText = 'transform: scale(1)';
   closeButton.addEventListener('click', () => {
@@ -126,14 +125,12 @@ export function buildTaskEditInterface(e) {
 }
 
 export function deleteTask(e) {
-  const clickedTaskUniqueClass = e.target.classList[1];
-  const clickedTaskIndex =
-    clickedTaskUniqueClass[clickedTaskUniqueClass.length - 1];
+  const clickedTaskId = e.target.getAttribute('data-id');
   const allTasks = projectManager.returnAllTasks();
-  const taskToDelete = allTasks[clickedTaskIndex];
-
-  console.log(taskToDelete);
-
+  let taskToDelete;
+  for (let task of allTasks) {
+    if (task.id === clickedTaskId) taskToDelete = task;
+  }
   //remove project from business logic
   taskToDelete.completionStatus = true;
   const allProjects = projectManager.returnProjects();
