@@ -30,13 +30,13 @@ export function buildTaskDomElement(parent, tasks) {
 
     switch (taskPriority) {
       case 'low':
-        flagColor = 'blue';
+        flagColor = '#22d3ee';
         break;
       case 'medium':
-        flagColor = 'orange';
+        flagColor = '#fb923c';
         break;
       case 'high':
-        flagColor = 'red';
+        flagColor = '#ef4444';
     }
 
     let flag = elementFromHtml(`

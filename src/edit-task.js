@@ -42,13 +42,19 @@ export function buildTaskEditInterface(e) {
             </div>
             <div class="priority-radio">
               <span>Priority:</span>
-              <label for="low">Low</label>
-              <input type="radio" name="priority" value="low" id="low" checked/>
-              <label for="medium">Medium</label>
-              <input type="radio" name="priority" value="medium" id="medium"/>
-              <label for="high">High</label>
-              <input type="radio" name="priority" value="high" id="high"/>
-              <button type="submit" class="task task-submit">Edit Task</button>
+              <div class="radio-button radio-low">
+                <input type="radio" id="low" name="priority" value="low"/>
+                <label for="low">LOW</label>
+              </div>
+              <div class="radio-button radio-medium">
+                <input type="radio" id="medium" name="priority" value="medium"/>
+                <label for="medium">MEDIUM</label>
+              </div>
+              <div class="radio-button radio-high">
+                <input type="radio" id="high" name="priority" value="high"/>
+                <label for="high">HIGH</label>
+              </div>
+              <button type="submit" class="task task-submit">Add Task</button>
             </div>
           </div>
         </form>

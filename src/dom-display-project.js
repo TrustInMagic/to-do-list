@@ -21,7 +21,7 @@ export function buildProjectDomElement(parent) {
         <div>${projectTitle}</div>
         <span class="dots" data-id="${projectId}">&#x22EE
           <div class="pop-up" data-id="${projectId}">
-            <div class="edit" data-id="${projectId}">Rename</div>
+            <div class="edit" data-id="${projectId}">Edit</div>
             <div class="delete" data-id="${projectId}">Delete</div>
           </div>
         </span>
