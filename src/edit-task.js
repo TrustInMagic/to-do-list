@@ -129,7 +129,7 @@ export function deleteTask(e) {
   //remove project from business logic
   taskToDelete.completionStatus = true;
   const allProjects = projectManager.returnProjects();
-  allProjects.forEach((project) => project.removeCompletedTasks());
+  allProjects.forEach((project) => project.moveToCompletedTasks());
   //remove project from DOM
   populateMainArea();
 }

@@ -94,6 +94,7 @@ function handleTaskCompletion(taskElement) {
 
   selectedTask.toggleCompletionStatus();
 
+
   function deleteCompletedTask() {
     const allProjects = projectManager.returnProjects();
     allProjects.forEach((project) => {
@@ -104,19 +105,23 @@ function handleTaskCompletion(taskElement) {
 
   function undoTaskDeletion() {
     const undoButton = document.querySelector('.undo-button');
-    const popUp = document.querySelector('.task-undo') 
+    const popUp = document.querySelector('.task-undo');
     const allProjects = projectManager.returnProjects();
 
     undoButton.addEventListener('click', () => {
       allProjects.forEach((project) => {
+        //switch the completion status back to false
+        selectedTask.toggleCompletionStatus()
         project.moveToUncompletedTasks();
         populateMainArea();
-        popUp.remove()
+        popUp.remove();
+
+        
       });
     });
   }
 
-  setTimeout(deleteCompletedTask, 700);
   setTimeout(buildTaskDeletionUndoPopUp, 700);
-  setTimeout(undoTaskDeletion, 750)
+  setTimeout(deleteCompletedTask, 700);
+  setTimeout(undoTaskDeletion, 700);
 }
