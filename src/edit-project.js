@@ -1,16 +1,17 @@
 import elementFromHtml from './modal-form-build';
 import projectManager from './project-manager';
-import { displayAllTasks } from './nav-utility'
+import { displayAllTasks } from './nav-utility';
+import { buildConfirmDeleteProjectPopUp } from './build-pop-ups';
 
 export function buildEditInterface(e) {
   const clickedProjectId = e.target.getAttribute('data-id');
   const allProjects = projectManager.returnProjects();
-  
-  let projectToEdit
+
+  let projectToEdit;
   for (let project of allProjects) {
-    if (project.id === clickedProjectId) projectToEdit = project
+    if (project.id === clickedProjectId) projectToEdit = project;
   }
-    
+
   const projectTitle = projectToEdit.getTitle();
   const body = document.querySelector('body');
 
@@ -75,24 +76,37 @@ export function deleteProject(e) {
   const clickedProjectId = e.target.getAttribute('data-id');
   const allProjects = projectManager.returnProjects();
 
+  buildConfirmDeleteProjectPopUp();
+  const deleteButton = document.querySelector('.pop-up-delete');
+  const projectName = document.querySelector('.project-name');
+
   let projectToDelete;
   for (let project of allProjects) {
     if (project.id === clickedProjectId) projectToDelete = project;
   }
 
-  //remove project from business logic
-  projectManager.removeProject(projectToDelete)
-  //remove project from DOM
-  removeProjectFromDom(clickedProjectId)
-  displayAllTasks()
+  projectName.textContent = `${projectToDelete.getTitle()}`
+  deleteButton.addEventListener('click', removeProjectAfterConfirm);
+
+  function removeProjectAfterConfirm() {
+    //remove project from business logic
+    projectManager.removeProject(projectToDelete);
+    //remove project from DOM
+    removeProjectFromDom(clickedProjectId);
+    displayAllTasks();
+  }
 }
 
 function editProjectNameFromDom(id, editValue) {
-  const projectDomElement = document.querySelector(`.project[data-id="${id}"] > div`);
+  const projectDomElement = document.querySelector(
+    `.project[data-id="${id}"] > div`
+  );
   projectDomElement.textContent = editValue;
 }
 
 function removeProjectFromDom(id) {
-  const projectDomElement = document.querySelector(`.project-container[data-id="${id}"]`);
-  projectDomElement.remove()
+  const projectDomElement = document.querySelector(
+    `.project-container[data-id="${id}"]`
+  );
+  projectDomElement.remove();
 }

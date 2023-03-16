@@ -16,10 +16,10 @@ function utilityRemoveActiveClassFromModal() {
   modalElements.forEach((element) => element.classList.remove('active'));
 }
 
-function toggleBlur() {
-  const modal = document.querySelector('.add-new-modal');
+export function toggleBlur(modal) {
   const header = document.querySelector('.header');
   const content = document.querySelector('.content');
+  console.log(modal)
   //check if 'popping' class in modal; means we are opening modal
   if (modal.getAttribute('class').includes('popping')) {
     header.style.cssText = 'filter: blur(3px)';
@@ -53,7 +53,7 @@ function popModal() {
   const taskButton = document.querySelector('.task');
   modal.classList.add('popping');
   modal.style.cssText = 'transform: scale(1)';
-  toggleBlur();
+  toggleBlur(modal);
   form.innerHTML = '';
   form.appendChild(taskForm);
   //adding 'task' class in order to differentiate the form type (task or project)
@@ -72,7 +72,7 @@ function closeModal() {
   const form = document.querySelector('form');
   modal.classList.remove('popping');
   modal.style.cssText = 'transform: scale(0)';
-  toggleBlur();
+  toggleBlur(modal);
   //replacing form node with it's clone so that we remove all event listeners
   form.replaceWith(form.cloneNode(true));
   form.reset();
@@ -120,10 +120,8 @@ function handleFormSubmission() {
   const projectsArea = document.querySelector('.projects-area');
 
   if (form.getAttribute('class').includes('task')) {
-    window.alert('Task added successfully');
     populateMainArea();
   } else {
-    window.alert('Project added successfully');
     buildProjectDomElement(projectsArea);
   }
 }

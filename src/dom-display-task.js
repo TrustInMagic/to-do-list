@@ -1,5 +1,8 @@
 import elementFromHtml from './modal-form-build';
 import { buildTaskEditInterface, deleteTask } from './edit-task';
+import projectManager from './project-manager';
+import { buildTaskDeletionUndoPopUp } from './build-pop-ups';
+import populateMainArea from './populate-main-area';
 
 export function buildTaskDomElement(parent, tasks) {
   for (let i = 0; i < tasks.length; i++) {
@@ -81,5 +84,39 @@ function handleTaskCompletion(taskElement) {
 
   if (taskCheck.checked) {
     taskTitle.innerHTML = `<s>${taskTitle.textContent}</s>`;
-  } else taskTitle.innerHTML = taskTitle.textContent
+  } else taskTitle.innerHTML = taskTitle.textContent;
+
+  let selectedTask;
+  const allTasks = projectManager.returnAllTasks();
+  allTasks.forEach((task) => {
+    if (task.id === taskCheck.getAttribute('data-id')) selectedTask = task;
+  });
+
+  selectedTask.toggleCompletionStatus();
+
+  function deleteCompletedTask() {
+    const allProjects = projectManager.returnProjects();
+    allProjects.forEach((project) => {
+      project.moveToCompletedTasks();
+    });
+    populateMainArea();
+  }
+
+  function undoTaskDeletion() {
+    const undoButton = document.querySelector('.undo-button');
+    const popUp = document.querySelector('.task-undo') 
+    const allProjects = projectManager.returnProjects();
+
+    undoButton.addEventListener('click', () => {
+      allProjects.forEach((project) => {
+        project.moveToUncompletedTasks();
+        populateMainArea();
+        popUp.remove()
+      });
+    });
+  }
+
+  setTimeout(deleteCompletedTask, 700);
+  setTimeout(buildTaskDeletionUndoPopUp, 700);
+  setTimeout(undoTaskDeletion, 750)
 }

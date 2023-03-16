@@ -18,6 +18,7 @@
   --low-radio: #22d3ee;
   --med-radio: #fb923c;
   --high-radio: #ef4444;
+  --pop-up-header: #fca5a5;
 }
 
 body {
@@ -69,7 +70,8 @@ h1 {
 .nav {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: min(20%, 350px);
+  min-width: 200px;
   gap: 40px;
   padding: 20px;
   background-color: var(--nav-light);
@@ -160,14 +162,16 @@ h2 {
   background-color: var(--brand-green);
   font-size: 1.5rem;
   color: var(--font-color-light);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.modal-header .close {
+.close {
   cursor: pointer;
   transition: all 0.3s;
 }
 
-.modal-header .close:hover {
+.close:hover {
   transform: rotate(90deg);
   transition: all 0.3s;
 }
@@ -187,6 +191,7 @@ h2 {
   gap: 10px;
   padding: 10px;
   font-weight: 600;
+  border-bottom-left-radius: 10px;
 }
 
 .modal-content img {
@@ -431,7 +436,7 @@ form select {
 .main-area-title {
   background-color: var(--brand-green);
   margin-top: 20px;
-  width: calc(100% - 100px);
+  width: 75%;
   height: 100px;
   display: flex;
   justify-content: center;
@@ -446,7 +451,7 @@ form select {
   flex-direction: column;
   margin-top: 30px;
   background-color: var(--header-content-light);
-  width: calc(100% - 100px);
+  width: 75%;
   height: 100%;
   gap: 10px;
   align-items: center;
@@ -526,11 +531,10 @@ form select {
   transform: translateY(-0.075em);
   display: grid;
   place-content: center;
-
 }
 
 .task-body input:before {
-  content: "";
+  content: '';
   width: 0.65em;
   height: 0.65em;
   transform: scale(0);
@@ -581,7 +585,7 @@ form select {
 }
 
 .popping {
-  transform: scale(1);
+  transform: scale(1) !important;
 }
 
 .task-dots {
@@ -593,4 +597,120 @@ form select {
 .task-body .pop-up {
   left: 10px;
   bottom: 20px;
+}
+
+/* confirm delete pop-up */
+
+.confirm-delete-pop-up {
+  height: 250px;
+  width: 400px;
+  position: fixed;
+  bottom: 20%;
+  left: 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nav-light);
+  box-shadow: 2px 2px 15px;
+  transform: scale(0);
+}
+
+.pop-up-header {
+  background-color: var(--pop-up-header);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  color: white;
+  font-size: 1.3rem;
+  padding: 5px 10px;
+}
+
+.pop-up-header .close {
+  margin-left: auto;
+  margin-bottom: auto;
+}
+
+.pop-up-message {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--hover-nav-color);
+  margin: 0px 10px;
+  height: 100px;
+  justify-content: space-evenly;
+  color: var(--font-color);
+}
+
+.pop-up-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0px 10px;
+  gap: 10px;
+  flex: 1;
+}
+
+.pop-up-button {
+  height: 40px;
+  width: 80px;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 1px;
+  box-shadow: 1px 1px 5px;
+  border: none;
+}
+
+.pop-up-cancel {
+  color: var(--font-color);
+}
+
+.pop-up-delete {
+  color: var(--high-radio);
+}
+
+.pop-up-cancel:hover {
+  background-color: var(--font-color);
+  color: white;
+}
+
+.pop-up-delete:hover {
+  background-color: var(--high-radio);
+  color: white;
+}
+
+button:active {
+  transform: scale(0.95) !important;
+}
+
+/* task undo pop-up */
+
+.task-undo {
+  height: 40px;
+  width: 200px;
+  display: flex;
+  font-size: 0.9rem;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 5px;
+  margin-left: 50%;
+  box-shadow: 2px 2px 10px;
+  border-radius: 10px;
+  transform: scale(0);
+  
+
+}
+
+.undo-button {
+  cursor: pointer;
+  color: var(--med-radio);
+  font-weight: 700;
+}
+
+.undo-button:active {
+  transform: scale(0.95);
 }
