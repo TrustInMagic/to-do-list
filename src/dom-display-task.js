@@ -114,16 +114,18 @@ function handleTaskCompletion(taskElement) {
       allProjects.forEach((project) => {
         //switch the completion status back to false
         selectedTask.toggleCompletionStatus();
-        project.moveToUncompletedTasks(selectedTask);
+        project.moveToUncompletedTasks();
         populateMainArea();
         popUp.remove();
+        updateLocalStorage(allProjects);
       });
     });
-    updateLocalStorage(allProjects);
   }
 
   setTimeout(buildTaskDeletionUndoPopUp, 700);
   setTimeout(deleteCompletedTask, 700);
   setTimeout(undoTaskDeletion, 700);
+
+  allProjects.forEach((project) => project.clearCompletedTasks())
   setTimeout(updateLocalStorage(allProjects), 700);
 }
