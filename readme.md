@@ -1,6 +1,6 @@
 # to-do-list
 
-Live at: 
+Live at: https://trustinmagic.github.io/to-do-list/
 
 To do list created with HTML CSS and JS. Bundled together with webpack. 
 Features localStorage.
