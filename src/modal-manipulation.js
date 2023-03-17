@@ -15,7 +15,6 @@ function utilityRemoveActiveClassFromModal() {
 export function toggleBlur(modal) {
   const header = document.querySelector('.header');
   const content = document.querySelector('.content');
-  console.log(modal)
   //check if 'popping' class in modal; means we are opening modal
   if (modal.getAttribute('class').includes('popping')) {
     header.style.cssText = 'filter: blur(3px)';

@@ -37,9 +37,7 @@ export default class Project {
 
   moveToUncompletedTasks() {
     const taskToMove = this.completedTasks[this.completedTasks.length - 1]
-    console.log(taskToMove)
     this.tasks.push(taskToMove)
-    console.log(this.tasks)
   }
 
   clearCompletedTasks() {
