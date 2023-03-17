@@ -7,6 +7,7 @@ import {
   displayTodayTasks,
   displayWeekTasks,
 } from './nav-utility';
+import './style.css';
 
 const addButton = document.querySelector('.add-new');
 const closeModalButton = document.querySelector('.modal-header .close');
