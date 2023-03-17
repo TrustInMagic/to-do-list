@@ -1,6 +1,7 @@
 import projectManager from './project-manager';
 import Project from './project';
 import Task from './task';
+import { updateLocalStorage } from './local-storage';
 export { getDataFromForms };
 
 function getDataFromForms(e) {
@@ -39,6 +40,7 @@ function getDataFromTaskForm() {
       project.addTask(taskToAdd);
     }
   });
+  updateLocalStorage(projects)
 }
 
 function getDataFromProjectForm() {

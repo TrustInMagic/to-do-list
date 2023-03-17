@@ -1,8 +1,16 @@
+import { updateLocalStorage, retrieveLocalStorage } from "./local-storage";
+
 export default (function projectManager() {
-  const projects = [];
+  const projects = retrieveLocalStorage('db')
 
   const addProject = (project) => {
-    projects.push(project);
+    for (let iteratedProject of projects) {
+      const projectsTitle = []
+      projectsTitle.push(iteratedProject.title)
+      if (projectsTitle.includes(project.title)) return
+    }
+    projects.push(project)
+    updateLocalStorage(projects)
   };
 
   const removeProject = (project) => {
@@ -11,6 +19,7 @@ export default (function projectManager() {
         projects.splice(i, 1);
       }
     }
+    updateLocalStorage(projects);
   };
 
   const returnAllTasks = () => {

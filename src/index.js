@@ -1,5 +1,6 @@
 import { popModal, closeModal } from './modal-manipulation';
 import { buildProjectDomElement } from './dom-display-project';
+import { buildLocalStorageNewUser } from './local-storage';
 import {
   displayAllTasks,
   displayImportantTasks,
@@ -47,5 +48,6 @@ important.addEventListener('click', () => {
   important.classList.add('active');
 });
 
+buildLocalStorageNewUser();
 buildProjectDomElement(projectsArea);
 displayAllTasks();
