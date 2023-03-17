@@ -9,12 +9,14 @@ const mainAreaTitle = document.querySelector('.main-area-title');
 
 export function buildProjectDomElement(parent) {
   const projects = projectManager.returnProjects();
-  const lastProjectAdded = projects[projects.length - 1];
-  const projectTitle = lastProjectAdded.getTitle();
-  const projectId = lastProjectAdded.id;
-  
+  parent.innerHTML = '';
 
-  const project = elementFromHtml(`
+  for (let i = 0; i < projects.length; i++) {
+    const lastProjectAdded = projects[i];
+    const projectTitle = lastProjectAdded.getTitle();
+    const projectId = lastProjectAdded.id;
+ 
+    const project = elementFromHtml(`
     <div class="project-container" data-id="${projectId}">
       <div class="project" data-id="${projectId}">
         <span class="hamburger">☰</span>
@@ -28,28 +30,29 @@ export function buildProjectDomElement(parent) {
       </div>
     </div>
   `);
+    
+    parent.appendChild(project);
 
-  parent.appendChild(project);
+    const projectContainer = project.querySelector('.project-container');
+    projectContainer.addEventListener('click', () => {
+      renderProjectTasks(lastProjectAdded);
+      utilityRemoveActiveClass();
+      projectContainer.classList.add('active');
+    });
 
-  const projectContainer = project.querySelector('.project-container');
-  projectContainer.addEventListener('click', () => {
-    renderProjectTasks(lastProjectAdded);
-    utilityRemoveActiveClass();
-    projectContainer.classList.add('active');
-  });
+    const projectEdit = project.querySelector('.dots');
+    const popUp = project.querySelector('.pop-up');
+    const renameButton = project.querySelector('.edit');
+    const deleteButton = project.querySelector('.delete');
 
-  const projectEdit = project.querySelector('.dots');
-  const popUp = project.querySelector('.pop-up');
-  const renameButton = project.querySelector('.edit');
-  const deleteButton = project.querySelector('.delete');
+    renameButton.addEventListener('click', buildEditInterface);
+    deleteButton.addEventListener('click', deleteProject);
+    projectEdit.addEventListener('click', () => popUp.classList.add('popping'));
 
-  renameButton.addEventListener('click', buildEditInterface);
-  deleteButton.addEventListener('click', deleteProject);
-  projectEdit.addEventListener('click', () => popUp.classList.add('popping'));
-
-  window.addEventListener('click', (e) => {
-    if (e.target !== projectEdit) popUp.classList.remove('popping');
-  });
+    window.addEventListener('click', (e) => {
+      if (e.target !== projectEdit) popUp.classList.remove('popping');
+    });
+  }
 }
 
 export function renderProjectTasks(project) {

@@ -36,9 +36,13 @@ export default class Project {
   }
 
   moveToUncompletedTasks() {
-    for (let i = 0; i < this.completedTasks.length; i++) {
-      this.tasks.push(this.completedTasks[i]);
-      this.completedTasks = [];
-    }
+    const taskToMove = this.completedTasks[this.completedTasks.length - 1]
+    console.log(taskToMove)
+    this.tasks.push(taskToMove)
+    console.log(this.tasks)
+  }
+
+  clearCompletedTasks() {
+    this.completedTasks = []
   }
 }

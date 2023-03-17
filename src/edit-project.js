@@ -2,6 +2,7 @@ import elementFromHtml from './modal-form-build';
 import projectManager from './project-manager';
 import { displayAllTasks } from './nav-utility';
 import { buildConfirmDeleteProjectPopUp } from './build-pop-ups';
+import { updateLocalStorage } from './local-storage';
 
 export function buildEditInterface(e) {
   const clickedProjectId = e.target.getAttribute('data-id');
@@ -64,6 +65,7 @@ export function buildEditInterface(e) {
     // edit project in business logic
     const editedTitle = editedTitleInput.value;
     projectToEdit.changeTitle(editedTitle);
+    updateLocalStorage(allProjects)
     //edit project in DOM
     editProjectNameFromDom(clickedProjectId, editedTitle);
 

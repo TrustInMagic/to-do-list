@@ -3,13 +3,9 @@ import { taskForm, projectForm } from './modal-form-build';
 import { getDataFromForms } from './data-manipulation';
 import populateMainArea from './populate-main-area';
 import projectManager from './project-manager';
-import Project from './project';
 export { popModal, closeModal };
 
 const modal = document.querySelector('.add-new-modal');
-
-const defaultProject = new Project('Your First Project');
-projectManager.addProject(defaultProject);
 
 function utilityRemoveActiveClassFromModal() {
   const modalElements = document.querySelectorAll('.add-new-modal div');

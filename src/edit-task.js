@@ -1,8 +1,10 @@
 import projectManager from './project-manager';
 import elementFromHtml from './modal-form-build';
 import populateMainArea from './populate-main-area';
+import { updateLocalStorage } from './local-storage';
 
 export function buildTaskEditInterface(e) {
+  const allProjects = projectManager.returnProjects();
   const clickedTaskId = e.target.getAttribute('data-id');
   const allTasks = projectManager.returnAllTasks();
   let taskToEdit;
@@ -112,6 +114,8 @@ export function buildTaskEditInterface(e) {
     radioButtons.forEach((button) => {
       if (button.checked) taskToEdit.priority = button.value;
     });
+
+    updateLocalStorage(allProjects)
     //edit project in DOM
     populateMainArea();
 
@@ -130,6 +134,8 @@ export function deleteTask(e) {
   taskToDelete.completionStatus = true;
   const allProjects = projectManager.returnProjects();
   allProjects.forEach((project) => project.moveToCompletedTasks());
+  
+  updateLocalStorage(allProjects)
   //remove project from DOM
   populateMainArea();
 }
