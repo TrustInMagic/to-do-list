@@ -25,7 +25,7 @@ export function buildEditInterface(e) {
       <div class="modal-content">
         <div class="modal-nav">
           <div class="project">
-            <img src="../src/assets/modal-project.png">
+            <img src="./images/assets/modal-project.png">
             <div>Project</div>
           </div>
         </div>

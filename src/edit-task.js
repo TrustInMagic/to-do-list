@@ -26,7 +26,7 @@ export function buildTaskEditInterface(e) {
       <div class="modal-content">
         <div class="modal-nav">
           <div class="task">
-            <img src="../src/assets/modal-task.png">
+            <img src="./images/modal-task.png">
             <div>Task</div>
           </div>
         </div>

@@ -126,6 +126,6 @@ function handleTaskCompletion(taskElement) {
   setTimeout(deleteCompletedTask, 700);
   setTimeout(undoTaskDeletion, 700);
 
-  allProjects.forEach((project) => project.clearCompletedTasks())
+  allProjects.forEach((project) => project.clearCompletedTasks());
   setTimeout(updateLocalStorage(allProjects), 700);
 }
