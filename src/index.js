@@ -8,6 +8,15 @@ import {
   displayWeekTasks,
 } from './nav-utility';
 import './style.css';
+import './assets/logo-icon.png';
+import './assets/7-days.png';
+import './assets/important-star.svg';
+import './assets/modal-project.png';
+import './assets/modal-task.png';
+import './assets/page-icon.png';
+import './assets/tasks.png';
+import './assets/today.png';
+import './assets/white-flag-svg.svg';
 
 const addButton = document.querySelector('.add-new');
 const closeModalButton = document.querySelector('.modal-header .close');
